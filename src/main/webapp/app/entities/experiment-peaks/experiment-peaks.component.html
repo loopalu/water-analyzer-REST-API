@@ -1,0 +1,76 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="ceApp.experimentPeaks.home.title">Experiment Peaks</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-experiment-peaks" [routerLink]="['/experiment-peaks/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="ceApp.experimentPeaks.home.createLabel">
+            Create new Experiment Peaks
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="experimentPeaks">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="ceApp.experimentPeaks.peakNumber">Peak Number</span></th>
+            <th><span jhiTranslate="ceApp.experimentPeaks.peakStart">Peak Start</span></th>
+            <th><span jhiTranslate="ceApp.experimentPeaks.peakEnd">Peak End</span></th>
+            <th><span jhiTranslate="ceApp.experimentPeaks.peakHighest">Peak Highest</span></th>
+            <th><span jhiTranslate="ceApp.experimentPeaks.peakArea">Peak Area</span></th>
+            <th><span jhiTranslate="ceApp.experimentPeaks.analyteConcentration">Analyte Concentration</span></th>
+            <th><span jhiTranslate="ceApp.experimentPeaks.analyte">Analyte</span></th>
+            <th><span jhiTranslate="ceApp.experimentPeaks.experimentAnalysis">Experiment Analysis</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let experimentPeaks of experimentPeaks ;trackBy: trackId">
+                <td><a [routerLink]="['/experiment-peaks', experimentPeaks.id, 'view' ]">{{experimentPeaks.id}}</a></td>
+                <td>{{experimentPeaks.peakNumber}}</td>
+                <td>{{experimentPeaks.peakStart}}</td>
+                <td>{{experimentPeaks.peakEnd}}</td>
+                <td>{{experimentPeaks.peakHighest}}</td>
+                <td>{{experimentPeaks.peakArea}}</td>
+                <td>{{experimentPeaks.analyteConcentration}}</td>
+                <td>
+                    <div *ngIf="experimentPeaks.analyte">
+                        <a [routerLink]="['../analyte', experimentPeaks.analyte?.id, 'view' ]" >{{experimentPeaks.analyte?.analyteName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="experimentPeaks.experimentAnalysis">
+                        <a [routerLink]="['../experiment-analysis', experimentPeaks.experimentAnalysis?.id, 'view' ]" >{{experimentPeaks.experimentAnalysis?.measuringPoint}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/experiment-peaks', experimentPeaks.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/experiment-peaks', experimentPeaks.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'experiment-peaks', { outlets: { popup: experimentPeaks.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

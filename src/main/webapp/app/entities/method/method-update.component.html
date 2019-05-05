@@ -1,0 +1,130 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-method-heading" jhiTranslate="ceApp.method.home.createOrEditLabel">Create or edit a Method</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!method.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="method.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.method.methodName" for="field_methodName">Method Name</label>
+                    <input type="text" class="form-control" name="methodName" id="field_methodName"
+                        [(ngModel)]="method.methodName" required/>
+                    <div [hidden]="!(editForm.controls.methodName?.dirty && editForm.controls.methodName?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.methodName?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.method.frequency" for="field_frequency">Frequency</label>
+                    <input type="number" class="form-control" name="frequency" placeholder="kHz" id="field_frequency"
+                        [(ngModel)]="method.frequency" required/>
+                    <div [hidden]="!(editForm.controls.frequency?.dirty && editForm.controls.frequency?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.frequency?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.frequency?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.method.injectionType" for="field_injectionType">Injection Type</label>
+                    <input type="text" class="form-control" name="injectionType" PLACEHOLDER="High Voltage, Vacuum, Pressure" id="field_injectionType"
+                           [(ngModel)]="method.injectionType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.method.injectionTime" for="field_injectionTime">Injection Time</label>
+                    <input type="number" class="form-control" name="injectionTime" placeholder="in seconds" id="field_injectionTime"
+                        [(ngModel)]="method.injectionTime" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.method.measureValue" for="field_measureValue">Measure Value</label>
+                    <input type="number" class="form-control" name="measureValue" id="field_measureValue"
+                        [(ngModel)]="method.measureValue" required/>
+                    <div [hidden]="!(editForm.controls.measureValue?.dirty && editForm.controls.measureValue?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.measureValue?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.measureValue?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.method.unitOfMeasure" for="field_unitOfMeasure">Unit Of Measure</label>
+                    <input type="text" class="form-control" name="unitOfMeasure" id="field_unitOfMeasure"
+                           [(ngModel)]="method.unitOfMeasure" required/>
+                    <div [hidden]="!(editForm.controls.unitOfMeasure?.dirty && editForm.controls.unitOfMeasure?.invalid)">
+                        <small class="form-text text-danger"
+                               [hidden]="!editForm.controls.unitOfMeasure?.errors?.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.method.experimentTime" for="field_experimentTime">Experiment Time</label>
+                    <input type="number" class="form-control" name="experimentTime" placeholder="in minutes" id="field_experimentTime"
+                        [(ngModel)]="method.experimentTime" required/>
+                    <div [hidden]="!(editForm.controls.experimentTime?.dirty && editForm.controls.experimentTime?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.experimentTime?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.experimentTime?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.method.current" for="field_current">Current</label>
+                    <input type="number" class="form-control" name="current" placeholder="-100 to 100 mA" id="field_current"
+                        [(ngModel)]="method.current" required/>
+                    <div [hidden]="!(editForm.controls.current?.dirty && editForm.controls.current?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.current?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.current?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.method.capillaryType" for="field_capillaryType">Capillary Type</label>
+                    <select class="form-control" id="field_capillaryType" name="capillaryType" [(ngModel)]="method.capillaryType" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="capillaryTypeOption.id === method.capillaryType?.id ? method.capillaryType : capillaryTypeOption" *ngFor="let capillaryTypeOption of capillarytypes; trackBy: trackCapillaryTypeById">{{capillaryTypeOption.capillaryName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.method.matrixList" for="field_matrixList">Matrix List</label>
+                    <select class="form-control" id="field_matrixList" name="matrixList" [(ngModel)]="method.matrixList" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="matrixListOption.id === method.matrixList?.id ? method.matrixList : matrixListOption" *ngFor="let matrixListOption of matrixlists; trackBy: trackMatrixListById">{{matrixListOption.matrixName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

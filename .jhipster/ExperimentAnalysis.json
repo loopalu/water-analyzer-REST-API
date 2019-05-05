@@ -1,0 +1,64 @@
+{
+    "name": "ExperimentAnalysis",
+    "fields": [
+        {
+            "fieldName": "measuringPoint",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "voltageExperiment",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "voltageSmoothed",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "valueMovingAverageSubtracted",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "valueOverThreshold",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "experimentPeaks",
+            "otherEntityRelationshipName": "experimentAnalysis",
+            "relationshipName": "experimentPeaks"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "experiment",
+            "otherEntityRelationshipName": "experimentAnalysis",
+            "relationshipName": "experiment",
+            "otherEntityField": "experimentTime"
+        }
+    ],
+    "changelogDate": "20190505184034",
+    "entityTableName": "experiment_analysis",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

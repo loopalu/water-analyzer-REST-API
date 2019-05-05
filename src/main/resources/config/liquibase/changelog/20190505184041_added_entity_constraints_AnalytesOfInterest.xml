@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity AnalytesOfInterest.
+    -->
+    <changeSet id="20190505184041-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="method_id"
+                                 baseTableName="analytes_of_interest"
+                                 constraintName="fk_analytes_of_interest_method_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="method"/>
+
+        <addForeignKeyConstraint baseColumnNames="analyte_id"
+                                 baseTableName="analytes_of_interest"
+                                 constraintName="fk_analytes_of_interest_analyte_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="analyte"/>
+
+    </changeSet>
+</databaseChangeLog>

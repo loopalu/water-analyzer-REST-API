@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190505184032_added_entity_Experiment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190505184033_added_entity_Analyte.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190505184034_added_entity_ExperimentAnalysis.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190505184035_added_entity_Method.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190505184036_added_entity_BGEComposition.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190505184037_added_entity_CapillaryType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190505184038_added_entity_ExperimentPeaks.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190505184039_added_entity_MatrixList.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190505184040_added_entity_ExperimentResults.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190505184041_added_entity_AnalytesOfInterest.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20190505184032_added_entity_constraints_Experiment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190505184034_added_entity_constraints_ExperimentAnalysis.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190505184035_added_entity_constraints_Method.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190505184036_added_entity_constraints_BGEComposition.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190505184038_added_entity_constraints_ExperimentPeaks.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190505184040_added_entity_constraints_ExperimentResults.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190505184041_added_entity_constraints_AnalytesOfInterest.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+</databaseChangeLog>

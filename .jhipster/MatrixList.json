@@ -1,0 +1,26 @@
+{
+    "name": "MatrixList",
+    "fields": [
+        {
+            "fieldName": "matrixName",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "method",
+            "otherEntityRelationshipName": "matrixList",
+            "relationshipName": "method"
+        }
+    ],
+    "changelogDate": "20190505184039",
+    "entityTableName": "matrix_list",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

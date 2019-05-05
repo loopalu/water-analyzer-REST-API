@@ -1,0 +1,29 @@
+{
+    "name": "AnalytesOfInterest",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "method",
+            "otherEntityRelationshipName": "analytesOfInterest",
+            "relationshipName": "method",
+            "otherEntityField": "methodName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "analyte",
+            "otherEntityRelationshipName": "analytesOfInterest",
+            "relationshipName": "analyte",
+            "otherEntityField": "analyteName"
+        }
+    ],
+    "changelogDate": "20190505184041",
+    "entityTableName": "analytes_of_interest",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,23 @@
+{
+    "ceApp": {
+        "bGEComposition": {
+            "home": {
+                "title": "BGE Compositions",
+                "createLabel": "Create a new BGE Composition",
+                "createOrEditLabel": "Create or edit a BGE Composition"
+            },
+            "created": "A new BGE Composition is created with identifier {{ param }}",
+            "updated": "A BGE Composition is updated with identifier {{ param }}",
+            "deleted": "A BGE Composition is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete BGE Composition {{ id }}?"
+            },
+            "detail": {
+                "title": "BGE Composition"
+            },
+            "backgroundElectrolyte": "Background Electrolyte",
+            "bgeConcentration": "Bge Concentration",
+            "method": "Method"
+        }
+    }
+}

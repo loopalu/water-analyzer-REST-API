@@ -1,0 +1,22 @@
+{
+    "ceApp": {
+        "matrixList": {
+            "home": {
+                "title": "Matrix Lists",
+                "createLabel": "Lisa uus Matrix List",
+                "createOrEditLabel": "Lisa või muuda Matrix List"
+            },
+            "created": "Uus Matrix List on loodud identifikaatoriga {{ param }}",
+            "updated": "Matrix List identifikaatoriga {{ param }} on muudetud",
+            "deleted": "Matrix List identifikaatoriga {{ param }} on kustutatud",
+            "delete": {
+                "question": "Kas olete kindel, et soovite kustutada Matrix List {{ id }}?"
+            },
+            "detail": {
+                "title": "Matrix List"
+            },
+            "matrixName": "Matrix Name",
+            "method": "Method"
+        }
+    }
+}

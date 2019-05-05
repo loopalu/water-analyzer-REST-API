@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Method.
+    -->
+    <changeSet id="20190505184035-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="capillary_type_id"
+                                 baseTableName="method"
+                                 constraintName="fk_method_capillary_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="capillary_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="matrix_list_id"
+                                 baseTableName="method"
+                                 constraintName="fk_method_matrix_list_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="matrix_list"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,28 @@
+{
+    "ceApp": {
+        "experimentPeaks": {
+            "home": {
+                "title": "Experiment Peaks",
+                "createLabel": "Lisa uus Experiment Peaks",
+                "createOrEditLabel": "Lisa või muuda Experiment Peaks"
+            },
+            "created": "Uus Experiment Peaks on loodud identifikaatoriga {{ param }}",
+            "updated": "Experiment Peaks identifikaatoriga {{ param }} on muudetud",
+            "deleted": "Experiment Peaks identifikaatoriga {{ param }} on kustutatud",
+            "delete": {
+                "question": "Kas olete kindel, et soovite kustutada Experiment Peaks {{ id }}?"
+            },
+            "detail": {
+                "title": "Experiment Peaks"
+            },
+            "peakNumber": "Peak Number",
+            "peakStart": "Peak Start",
+            "peakEnd": "Peak End",
+            "peakHighest": "Peak Highest",
+            "peakArea": "Peak Area",
+            "analyteConcentration": "Analyte Concentration",
+            "analyte": "Analyte",
+            "experimentAnalysis": "Experiment Analysis"
+        }
+    }
+}

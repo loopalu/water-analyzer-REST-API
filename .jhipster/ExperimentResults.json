@@ -1,0 +1,31 @@
+{
+    "name": "ExperimentResults",
+    "fields": [
+        {
+            "fieldName": "measuringPoint",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "voltageValue",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "experiment",
+            "otherEntityRelationshipName": "experimentResults",
+            "relationshipName": "experiment",
+            "otherEntityField": "experimentTime"
+        }
+    ],
+    "changelogDate": "20190505184040",
+    "entityTableName": "experiment_results",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

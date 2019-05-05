@@ -1,0 +1,27 @@
+{
+    "ceApp": {
+        "experimentAnalysis": {
+            "home": {
+                "title": "Experiment Analyses",
+                "createLabel": "Create a new Experiment Analysis",
+                "createOrEditLabel": "Create or edit a Experiment Analysis"
+            },
+            "created": "A new Experiment Analysis is created with identifier {{ param }}",
+            "updated": "A Experiment Analysis is updated with identifier {{ param }}",
+            "deleted": "A Experiment Analysis is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Experiment Analysis {{ id }}?"
+            },
+            "detail": {
+                "title": "Experiment Analysis"
+            },
+            "measuringPoint": "Measuring Point",
+            "voltageExperiment": "Voltage Experiment",
+            "voltageSmoothed": "Voltage Smoothed",
+            "valueMovingAverageSubtracted": "Value Moving Average Subtracted",
+            "valueOverThreshold": "Value Over Threshold",
+            "experimentPeaks": "Experiment Peaks",
+            "experiment": "Experiment"
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "ceApp": {
+        "capillaryType": {
+            "home": {
+                "title": "Capillary Types",
+                "createLabel": "Create a new Capillary Type",
+                "createOrEditLabel": "Create or edit a Capillary Type"
+            },
+            "created": "A new Capillary Type is created with identifier {{ param }}",
+            "updated": "A Capillary Type is updated with identifier {{ param }}",
+            "deleted": "A Capillary Type is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Capillary Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Capillary Type"
+            },
+            "capillaryName": "Capillary Name",
+            "capillaryLength": "Capillary Length",
+            "effectiveLength": "Effective Length",
+            "innerDiameter": "Inner Diameter",
+            "outerDiameter": "Outer Diameter",
+            "electricForce": "Electric Force",
+            "method": "Method"
+        }
+    }
+}

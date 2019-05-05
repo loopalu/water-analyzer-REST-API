@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="method">
+            <h2><span jhiTranslate="ceApp.method.detail.title">Method</span> {{method.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="ceApp.method.methodName">Method Name</span></dt>
+                <dd>
+                    <span>{{method.methodName}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.method.frequency">Frequency</span></dt>
+                <dd>
+                    <span>{{method.frequency}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.method.injectionType">Injection Type</span></dt>
+                <dd>
+                    <span>{{method.injectionType}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.method.injectionTime">Injection Time</span></dt>
+                <dd>
+                    <span>{{method.injectionTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.method.measureValue">Measure Value</span></dt>
+                <dd>
+                    <span>{{method.measureValue}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.method.unitOfMeasure">Unit Of Measure</span></dt>
+                <dd>
+                    <span>{{method.unitOfMeasure}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.method.experimentTime">Experiment Time</span></dt>
+                <dd>
+                    <span>{{method.experimentTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.method.current">Current</span></dt>
+                <dd>
+                    <span>{{method.current}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.method.capillaryType">Capillary Type</span></dt>
+                <dd>
+                    <div *ngIf="method.capillaryType">
+                        <a [routerLink]="['/capillary-type', method.capillaryType?.id, 'view']">{{method.capillaryType?.capillaryName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="ceApp.method.matrixList">Matrix List</span></dt>
+                <dd>
+                    <div *ngIf="method.matrixList">
+                        <a [routerLink]="['/matrix-list', method.matrixList?.id, 'view']">{{method.matrixList?.matrixName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/method', method.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="ceApp.capillaryType.home.title">Capillary Types</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-capillary-type" [routerLink]="['/capillary-type/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="ceApp.capillaryType.home.createLabel">
+            Create new Capillary Type
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="capillaryTypes">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="ceApp.capillaryType.capillaryName">Capillary Name</span></th>
+            <th><span jhiTranslate="ceApp.capillaryType.capillaryLength">Capillary Length</span></th>
+            <th><span jhiTranslate="ceApp.capillaryType.effectiveLength">Effective Length</span></th>
+            <th><span jhiTranslate="ceApp.capillaryType.innerDiameter">Inner Diameter</span></th>
+            <th><span jhiTranslate="ceApp.capillaryType.outerDiameter">Outer Diameter</span></th>
+            <th><span jhiTranslate="ceApp.capillaryType.electricForce">Electric Force</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let capillaryType of capillaryTypes ;trackBy: trackId">
+                <td><a [routerLink]="['/capillary-type', capillaryType.id, 'view' ]">{{capillaryType.id}}</a></td>
+                <td>{{capillaryType.capillaryName}}</td>
+                <td>{{capillaryType.capillaryLength}}</td>
+                <td>{{capillaryType.effectiveLength}}</td>
+                <td>{{capillaryType.innerDiameter}}</td>
+                <td>{{capillaryType.outerDiameter}}</td>
+                <td>{{capillaryType.electricForce}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/capillary-type', capillaryType.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/capillary-type', capillaryType.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'capillary-type', { outlets: { popup: capillaryType.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

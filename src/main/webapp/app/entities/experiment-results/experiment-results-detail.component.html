@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="experimentResults">
+            <h2><span jhiTranslate="ceApp.experimentResults.detail.title">Experiment Results</span> {{experimentResults.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="ceApp.experimentResults.measuringPoint">Measuring Point</span></dt>
+                <dd>
+                    <span>{{experimentResults.measuringPoint}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.experimentResults.voltageValue">Voltage Value</span></dt>
+                <dd>
+                    <span>{{experimentResults.voltageValue}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.experimentResults.experiment">Experiment</span></dt>
+                <dd>
+                    <div *ngIf="experimentResults.experiment">
+                        <a [routerLink]="['/experiment', experimentResults.experiment?.id, 'view']">{{experimentResults.experiment?.experimentTime}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/experiment-results', experimentResults.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

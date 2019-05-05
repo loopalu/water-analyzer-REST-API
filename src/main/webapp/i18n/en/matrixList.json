@@ -1,0 +1,22 @@
+{
+    "ceApp": {
+        "matrixList": {
+            "home": {
+                "title": "Matrix Lists",
+                "createLabel": "Create a new Matrix List",
+                "createOrEditLabel": "Create or edit a Matrix List"
+            },
+            "created": "A new Matrix List is created with identifier {{ param }}",
+            "updated": "A Matrix List is updated with identifier {{ param }}",
+            "deleted": "A Matrix List is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Matrix List {{ id }}?"
+            },
+            "detail": {
+                "title": "Matrix List"
+            },
+            "matrixName": "Matrix Name",
+            "method": "Method"
+        }
+    }
+}

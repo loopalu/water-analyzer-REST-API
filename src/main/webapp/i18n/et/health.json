@@ -1,0 +1,28 @@
+{
+    "health": {
+        "title": "Tervisekontrollid",
+        "refresh.button": "Värskenda",
+        "stacktrace": "Stacktrace",
+        "details": {
+            "details": "Detailid",
+            "properties": "Omadused",
+            "name": "Nimetus",
+            "value": "Väärtus",
+            "error": "Viga"
+        },
+        "indicator": {
+            "diskSpace": "Kettaruum",
+            "mail": "E-post",
+            "db": "Andmebaas"
+        },
+        "table": {
+            "service": "Teenuse nimi",
+            "status": "Seisund"
+        },
+        "status": {
+            "UNKNOWN": "UNKNOWN",
+            "UP": "UP",
+            "DOWN": "DOWN"
+        }
+    }
+}

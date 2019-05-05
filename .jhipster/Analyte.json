@@ -1,0 +1,42 @@
+{
+    "name": "Analyte",
+    "fields": [
+        {
+            "fieldName": "analyteName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "analyteGroup",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "experimentPeaks",
+            "otherEntityRelationshipName": "analyte",
+            "relationshipName": "experimentPeaks"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "analytesOfInterest",
+            "otherEntityRelationshipName": "analyte",
+            "relationshipName": "analytesOfInterest"
+        }
+    ],
+    "changelogDate": "20190505184033",
+    "entityTableName": "analyte",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

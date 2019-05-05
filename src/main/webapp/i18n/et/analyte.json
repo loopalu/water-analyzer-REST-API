@@ -1,0 +1,24 @@
+{
+    "ceApp": {
+        "analyte": {
+            "home": {
+                "title": "Analytes",
+                "createLabel": "Lisa uus Analyte",
+                "createOrEditLabel": "Lisa või muuda Analyte"
+            },
+            "created": "Uus Analyte on loodud identifikaatoriga {{ param }}",
+            "updated": "Analyte identifikaatoriga {{ param }} on muudetud",
+            "deleted": "Analyte identifikaatoriga {{ param }} on kustutatud",
+            "delete": {
+                "question": "Kas olete kindel, et soovite kustutada Analyte {{ id }}?"
+            },
+            "detail": {
+                "title": "Analyte"
+            },
+            "analyteName": "Analyte Name",
+            "analyteGroup": "Analyte Group",
+            "experimentPeaks": "Experiment Peaks",
+            "analytesOfInterest": "Analytes Of Interest"
+        }
+    }
+}

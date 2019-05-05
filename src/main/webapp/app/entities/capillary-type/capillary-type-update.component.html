@@ -1,0 +1,100 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-capillary-type-heading" jhiTranslate="ceApp.capillaryType.home.createOrEditLabel">Create or edit a Capillary Type</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!capillaryType.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="capillaryType.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.capillaryType.capillaryName" for="field_capillaryName">Capillary Name</label>
+                    <input type="text" class="form-control" name="capillaryName" id="field_capillaryName"
+                        [(ngModel)]="capillaryType.capillaryName" required/>
+                    <div [hidden]="!(editForm.controls.capillaryName?.dirty && editForm.controls.capillaryName?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.capillaryName?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.capillaryType.capillaryLength" for="field_capillaryLength">Capillary Length</label>
+                    <input type="number" class="form-control" name="capillaryLength" id="field_capillaryLength"
+                        [(ngModel)]="capillaryType.capillaryLength" required/>
+                    <div [hidden]="!(editForm.controls.capillaryLength?.dirty && editForm.controls.capillaryLength?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.capillaryLength?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.capillaryLength?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.capillaryType.effectiveLength" for="field_effectiveLength">Effective Length</label>
+                    <input type="number" class="form-control" name="effectiveLength" id="field_effectiveLength"
+                        [(ngModel)]="capillaryType.effectiveLength" required/>
+                    <div [hidden]="!(editForm.controls.effectiveLength?.dirty && editForm.controls.effectiveLength?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.effectiveLength?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.effectiveLength?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.capillaryType.innerDiameter" for="field_innerDiameter">Inner Diameter</label>
+                    <input type="number" class="form-control" name="innerDiameter" id="field_innerDiameter"
+                        [(ngModel)]="capillaryType.innerDiameter" required/>
+                    <div [hidden]="!(editForm.controls.innerDiameter?.dirty && editForm.controls.innerDiameter?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.innerDiameter?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.innerDiameter?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.capillaryType.outerDiameter" for="field_outerDiameter">Outer Diameter</label>
+                    <input type="number" class="form-control" name="outerDiameter" id="field_outerDiameter"
+                        [(ngModel)]="capillaryType.outerDiameter" required/>
+                    <div [hidden]="!(editForm.controls.outerDiameter?.dirty && editForm.controls.outerDiameter?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.outerDiameter?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.outerDiameter?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.capillaryType.electricForce" for="field_electricForce">Electric Force</label>
+                    <input type="number" class="form-control" name="electricForce" id="field_electricForce"
+                        [(ngModel)]="capillaryType.electricForce" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

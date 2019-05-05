@@ -1,0 +1,22 @@
+{
+    "ceApp": {
+        "analytesOfInterest": {
+            "home": {
+                "title": "Analytes Of Interests",
+                "createLabel": "Lisa uus Analytes Of Interest",
+                "createOrEditLabel": "Lisa või muuda Analytes Of Interest"
+            },
+            "created": "Uus Analytes Of Interest on loodud identifikaatoriga {{ param }}",
+            "updated": "Analytes Of Interest identifikaatoriga {{ param }} on muudetud",
+            "deleted": "Analytes Of Interest identifikaatoriga {{ param }} on kustutatud",
+            "delete": {
+                "question": "Kas olete kindel, et soovite kustutada Analytes Of Interest {{ id }}?"
+            },
+            "detail": {
+                "title": "Analytes Of Interest"
+            },
+            "method": "Method",
+            "analyte": "Analyte"
+        }
+    }
+}

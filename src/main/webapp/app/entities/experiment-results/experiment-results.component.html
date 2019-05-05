@@ -1,0 +1,62 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="ceApp.experimentResults.home.title">Experiment Results</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-experiment-results" [routerLink]="['/experiment-results/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="ceApp.experimentResults.home.createLabel">
+            Create new Experiment Results
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="experimentResults">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="ceApp.experimentResults.measuringPoint">Measuring Point</span></th>
+            <th><span jhiTranslate="ceApp.experimentResults.voltageValue">Voltage Value</span></th>
+            <th><span jhiTranslate="ceApp.experimentResults.experiment">Experiment</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let experimentResults of experimentResults ;trackBy: trackId">
+                <td><a [routerLink]="['/experiment-results', experimentResults.id, 'view' ]">{{experimentResults.id}}</a></td>
+                <td>{{experimentResults.measuringPoint}}</td>
+                <td>{{experimentResults.voltageValue}}</td>
+                <td>
+                    <div *ngIf="experimentResults.experiment">
+                        <a [routerLink]="['../experiment', experimentResults.experiment?.id, 'view' ]" >{{experimentResults.experiment?.experimentTime}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/experiment-results', experimentResults.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/experiment-results', experimentResults.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'experiment-results', { outlets: { popup: experimentResults.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

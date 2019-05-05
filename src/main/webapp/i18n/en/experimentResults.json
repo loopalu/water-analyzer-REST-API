@@ -1,0 +1,23 @@
+{
+    "ceApp": {
+        "experimentResults": {
+            "home": {
+                "title": "Experiment Results",
+                "createLabel": "Create a new Experiment Results",
+                "createOrEditLabel": "Create or edit a Experiment Results"
+            },
+            "created": "A new Experiment Results is created with identifier {{ param }}",
+            "updated": "A Experiment Results is updated with identifier {{ param }}",
+            "deleted": "A Experiment Results is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Experiment Results {{ id }}?"
+            },
+            "detail": {
+                "title": "Experiment Results"
+            },
+            "measuringPoint": "Measuring Point",
+            "voltageValue": "Voltage Value",
+            "experiment": "Experiment"
+        }
+    }
+}

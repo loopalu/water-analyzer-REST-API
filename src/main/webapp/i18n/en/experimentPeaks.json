@@ -1,0 +1,28 @@
+{
+    "ceApp": {
+        "experimentPeaks": {
+            "home": {
+                "title": "Experiment Peaks",
+                "createLabel": "Create a new Experiment Peaks",
+                "createOrEditLabel": "Create or edit a Experiment Peaks"
+            },
+            "created": "A new Experiment Peaks is created with identifier {{ param }}",
+            "updated": "A Experiment Peaks is updated with identifier {{ param }}",
+            "deleted": "A Experiment Peaks is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Experiment Peaks {{ id }}?"
+            },
+            "detail": {
+                "title": "Experiment Peaks"
+            },
+            "peakNumber": "Peak Number",
+            "peakStart": "Peak Start",
+            "peakEnd": "Peak End",
+            "peakHighest": "Peak Highest",
+            "peakArea": "Peak Area",
+            "analyteConcentration": "Analyte Concentration",
+            "analyte": "Analyte",
+            "experimentAnalysis": "Experiment Analysis"
+        }
+    }
+}

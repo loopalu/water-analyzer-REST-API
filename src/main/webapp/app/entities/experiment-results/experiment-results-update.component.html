@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-experiment-results-heading" jhiTranslate="ceApp.experimentResults.home.createOrEditLabel">Create or edit a Experiment Results</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!experimentResults.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="experimentResults.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.experimentResults.measuringPoint" for="field_measuringPoint">Measuring Point</label>
+                    <input type="number" class="form-control" name="measuringPoint" id="field_measuringPoint"
+                        [(ngModel)]="experimentResults.measuringPoint" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.experimentResults.voltageValue" for="field_voltageValue">Voltage Value</label>
+                    <input type="number" class="form-control" name="voltageValue" id="field_voltageValue"
+                        [(ngModel)]="experimentResults.voltageValue" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.experimentResults.experiment" for="field_experiment">Experiment</label>
+                    <select class="form-control" id="field_experiment" name="experiment" [(ngModel)]="experimentResults.experiment" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="experimentOption.id === experimentResults.experiment?.id ? experimentResults.experiment : experimentOption" *ngFor="let experimentOption of experiments; trackBy: trackExperimentById">{{experimentOption.experimentTime}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

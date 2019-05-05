@@ -1,0 +1,106 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-experiment-analysis-heading" jhiTranslate="ceApp.experimentAnalysis.home.createOrEditLabel">Create or edit a Experiment Analysis</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!experimentAnalysis.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="experimentAnalysis.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.experimentAnalysis.measuringPoint" for="field_measuringPoint">Measuring Point</label>
+                    <input type="number" class="form-control" name="measuringPoint" id="field_measuringPoint"
+                        [(ngModel)]="experimentAnalysis.measuringPoint" required/>
+                    <div [hidden]="!(editForm.controls.measuringPoint?.dirty && editForm.controls.measuringPoint?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.measuringPoint?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.measuringPoint?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.experimentAnalysis.voltageExperiment" for="field_voltageExperiment">Voltage Experiment</label>
+                    <input type="number" class="form-control" name="voltageExperiment" id="field_voltageExperiment"
+                        [(ngModel)]="experimentAnalysis.voltageExperiment" required/>
+                    <div [hidden]="!(editForm.controls.voltageExperiment?.dirty && editForm.controls.voltageExperiment?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.voltageExperiment?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.voltageExperiment?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.experimentAnalysis.voltageSmoothed" for="field_voltageSmoothed">Voltage Smoothed</label>
+                    <input type="number" class="form-control" name="voltageSmoothed" id="field_voltageSmoothed"
+                        [(ngModel)]="experimentAnalysis.voltageSmoothed" required/>
+                    <div [hidden]="!(editForm.controls.voltageSmoothed?.dirty && editForm.controls.voltageSmoothed?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.voltageSmoothed?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.voltageSmoothed?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.experimentAnalysis.valueMovingAverageSubtracted" for="field_valueMovingAverageSubtracted">Value Moving Average Subtracted</label>
+                    <input type="number" class="form-control" name="valueMovingAverageSubtracted" id="field_valueMovingAverageSubtracted"
+                        [(ngModel)]="experimentAnalysis.valueMovingAverageSubtracted" required/>
+                    <div [hidden]="!(editForm.controls.valueMovingAverageSubtracted?.dirty && editForm.controls.valueMovingAverageSubtracted?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.valueMovingAverageSubtracted?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.valueMovingAverageSubtracted?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.experimentAnalysis.valueOverThreshold" for="field_valueOverThreshold">Value Over Threshold</label>
+                    <input type="number" class="form-control" name="valueOverThreshold" id="field_valueOverThreshold"
+                        [(ngModel)]="experimentAnalysis.valueOverThreshold" required/>
+                    <div [hidden]="!(editForm.controls.valueOverThreshold?.dirty && editForm.controls.valueOverThreshold?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.valueOverThreshold?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.valueOverThreshold?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.experimentAnalysis.experiment" for="field_experiment">Experiment</label>
+                    <select class="form-control" id="field_experiment" name="experiment" [(ngModel)]="experimentAnalysis.experiment" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="experimentOption.id === experimentAnalysis.experiment?.id ? experimentAnalysis.experiment : experimentOption" *ngFor="let experimentOption of experiments; trackBy: trackExperimentById">{{experimentOption.experimentTime}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

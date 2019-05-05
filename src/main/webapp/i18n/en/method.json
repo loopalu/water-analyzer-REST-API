@@ -1,0 +1,33 @@
+{
+    "ceApp": {
+        "method": {
+            "home": {
+                "title": "Methods",
+                "createLabel": "Create a new Method",
+                "createOrEditLabel": "Create or edit a Method"
+            },
+            "created": "A new Method is created with identifier {{ param }}",
+            "updated": "A Method is updated with identifier {{ param }}",
+            "deleted": "A Method is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Method {{ id }}?"
+            },
+            "detail": {
+                "title": "Method"
+            },
+            "methodName": "Method Name",
+            "frequency": "Frequency",
+            "injectionType": "Injection Type",
+            "injectionTime": "Injection Time",
+            "measureValue": "Measure Value",
+            "unitOfMeasure": "Unit Of Measure",
+            "experimentTime": "Experiment Time",
+            "current": "Current",
+            "experiment": "Experiment",
+            "bGEComposition": "B GE Composition",
+            "analytesOfInterest": "Analytes Of Interest",
+            "capillaryType": "Capillary Type",
+            "matrixList": "Matrix List"
+        }
+    }
+}

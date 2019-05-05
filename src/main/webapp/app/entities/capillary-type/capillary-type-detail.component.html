@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="capillaryType">
+            <h2><span jhiTranslate="ceApp.capillaryType.detail.title">Capillary Type</span> {{capillaryType.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="ceApp.capillaryType.capillaryName">Capillary Name</span></dt>
+                <dd>
+                    <span>{{capillaryType.capillaryName}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.capillaryType.capillaryLength">Capillary Length</span></dt>
+                <dd>
+                    <span>{{capillaryType.capillaryLength}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.capillaryType.effectiveLength">Effective Length</span></dt>
+                <dd>
+                    <span>{{capillaryType.effectiveLength}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.capillaryType.innerDiameter">Inner Diameter</span></dt>
+                <dd>
+                    <span>{{capillaryType.innerDiameter}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.capillaryType.outerDiameter">Outer Diameter</span></dt>
+                <dd>
+                    <span>{{capillaryType.outerDiameter}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.capillaryType.electricForce">Electric Force</span></dt>
+                <dd>
+                    <span>{{capillaryType.electricForce}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/capillary-type', capillaryType.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

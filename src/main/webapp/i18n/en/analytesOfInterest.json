@@ -1,0 +1,22 @@
+{
+    "ceApp": {
+        "analytesOfInterest": {
+            "home": {
+                "title": "Analytes Of Interests",
+                "createLabel": "Create a new Analytes Of Interest",
+                "createOrEditLabel": "Create or edit a Analytes Of Interest"
+            },
+            "created": "A new Analytes Of Interest is created with identifier {{ param }}",
+            "updated": "A Analytes Of Interest is updated with identifier {{ param }}",
+            "deleted": "A Analytes Of Interest is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Analytes Of Interest {{ id }}?"
+            },
+            "detail": {
+                "title": "Analytes Of Interest"
+            },
+            "method": "Method",
+            "analyte": "Analyte"
+        }
+    }
+}

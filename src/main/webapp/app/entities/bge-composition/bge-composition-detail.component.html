@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="bGEComposition">
+            <h2><span jhiTranslate="ceApp.bGEComposition.detail.title">BGE Composition</span> {{bGEComposition.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="ceApp.bGEComposition.backgroundElectrolyte">Background Electrolyte</span></dt>
+                <dd>
+                    <span>{{bGEComposition.backgroundElectrolyte}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.bGEComposition.bgeConcentration">Bge Concentration</span></dt>
+                <dd>
+                    <span>{{bGEComposition.bgeConcentration}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.bGEComposition.method">Method</span></dt>
+                <dd>
+                    <div *ngIf="bGEComposition.method">
+                        <a [routerLink]="['/method', bGEComposition.method?.id, 'view']">{{bGEComposition.method?.methodName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/bge-composition', bGEComposition.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

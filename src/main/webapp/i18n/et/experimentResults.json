@@ -1,0 +1,23 @@
+{
+    "ceApp": {
+        "experimentResults": {
+            "home": {
+                "title": "Experiment Results",
+                "createLabel": "Lisa uus Experiment Results",
+                "createOrEditLabel": "Lisa või muuda Experiment Results"
+            },
+            "created": "Uus Experiment Results on loodud identifikaatoriga {{ param }}",
+            "updated": "Experiment Results identifikaatoriga {{ param }} on muudetud",
+            "deleted": "Experiment Results identifikaatoriga {{ param }} on kustutatud",
+            "delete": {
+                "question": "Kas olete kindel, et soovite kustutada Experiment Results {{ id }}?"
+            },
+            "detail": {
+                "title": "Experiment Results"
+            },
+            "measuringPoint": "Measuring Point",
+            "voltageValue": "Voltage Value",
+            "experiment": "Experiment"
+        }
+    }
+}

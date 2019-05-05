@@ -1,0 +1,54 @@
+{
+    "name": "ExperimentPeaks",
+    "fields": [
+        {
+            "fieldName": "peakNumber",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "peakStart",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "peakEnd",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "peakHighest",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "peakArea",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "analyteConcentration",
+            "fieldType": "Float"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "analyte",
+            "otherEntityRelationshipName": "experimentPeaks",
+            "relationshipName": "analyte",
+            "otherEntityField": "analyteName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "experimentAnalysis",
+            "otherEntityRelationshipName": "experimentPeaks",
+            "relationshipName": "experimentAnalysis",
+            "otherEntityField": "measuringPoint"
+        }
+    ],
+    "changelogDate": "20190505184038",
+    "entityTableName": "experiment_peaks",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

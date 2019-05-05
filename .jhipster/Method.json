@@ -1,0 +1,98 @@
+{
+    "name": "Method",
+    "fields": [
+        {
+            "fieldName": "methodName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "frequency",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "injectionType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "injectionTime",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "measureValue",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "unitOfMeasure",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "experimentTime",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "current",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "experiment",
+            "otherEntityRelationshipName": "method",
+            "relationshipName": "experiment"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "bGEComposition",
+            "otherEntityRelationshipName": "method",
+            "relationshipName": "bGEComposition"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "analytesOfInterest",
+            "otherEntityRelationshipName": "method",
+            "relationshipName": "analytesOfInterest"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "capillaryType",
+            "otherEntityRelationshipName": "method",
+            "relationshipName": "capillaryType",
+            "otherEntityField": "capillaryName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "matrixList",
+            "otherEntityRelationshipName": "method",
+            "relationshipName": "matrixList",
+            "otherEntityField": "matrixName"
+        }
+    ],
+    "changelogDate": "20190505184035",
+    "entityTableName": "method",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

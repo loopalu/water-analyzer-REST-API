@@ -1,0 +1,25 @@
+{
+    "ceApp": {
+        "experiment": {
+            "home": {
+                "title": "Experiments",
+                "createLabel": "Lisa uus Experiment",
+                "createOrEditLabel": "Lisa või muuda Experiment"
+            },
+            "created": "Uus Experiment on loodud identifikaatoriga {{ param }}",
+            "updated": "Experiment identifikaatoriga {{ param }} on muudetud",
+            "deleted": "Experiment identifikaatoriga {{ param }} on kustutatud",
+            "delete": {
+                "question": "Kas olete kindel, et soovite kustutada Experiment {{ id }}?"
+            },
+            "detail": {
+                "title": "Experiment"
+            },
+            "experimentTime": "Experiment Time",
+            "experimentType": "Experiment Type",
+            "experimentAnalysis": "Experiment Analysis",
+            "experimentResults": "Experiment Results",
+            "method": "Method"
+        }
+    }
+}

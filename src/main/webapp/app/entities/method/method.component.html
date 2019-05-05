@@ -1,0 +1,80 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="ceApp.method.home.title">Methods</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-method" [routerLink]="['/method/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="ceApp.method.home.createLabel">
+            Create new Method
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="methods">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="ceApp.method.methodName">Method Name</span></th>
+            <th><span jhiTranslate="ceApp.method.frequency">Frequency</span></th>
+            <th><span jhiTranslate="ceApp.method.injectionType">Injection Type</span></th>
+            <th><span jhiTranslate="ceApp.method.injectionTime">Injection Time</span></th>
+            <th><span jhiTranslate="ceApp.method.measureValue">Measure Value</span></th>
+            <th><span jhiTranslate="ceApp.method.unitOfMeasure">Unit Of Measure</span></th>
+            <th><span jhiTranslate="ceApp.method.experimentTime">Experiment Time</span></th>
+            <th><span jhiTranslate="ceApp.method.current">Current</span></th>
+            <th><span jhiTranslate="ceApp.method.capillaryType">Capillary Type</span></th>
+            <th><span jhiTranslate="ceApp.method.matrixList">Matrix List</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let method of methods ;trackBy: trackId">
+                <td><a [routerLink]="['/method', method.id, 'view' ]">{{method.id}}</a></td>
+                <td>{{method.methodName}}</td>
+                <td>{{method.frequency}}</td>
+                <td>{{method.injectionType}}</td>
+                <td>{{method.injectionTime}}</td>
+                <td>{{method.measureValue}}</td>
+                <td>{{method.unitOfMeasure}}</td>
+                <td>{{method.experimentTime}}</td>
+                <td>{{method.current}}</td>
+                <td>
+                    <div *ngIf="method.capillaryType">
+                        <a [routerLink]="['../capillary-type', method.capillaryType?.id, 'view' ]" >{{method.capillaryType?.capillaryName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="method.matrixList">
+                        <a [routerLink]="['../matrix-list', method.matrixList?.id, 'view' ]" >{{method.matrixList?.matrixName}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/method', method.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/method', method.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'method', { outlets: { popup: method.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-bge-composition-heading" jhiTranslate="ceApp.bGEComposition.home.createOrEditLabel">Create or edit a BGE Composition</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!bGEComposition.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="bGEComposition.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.bGEComposition.backgroundElectrolyte" for="field_backgroundElectrolyte">Background Electrolyte</label>
+                    <input type="text" class="form-control" name="backgroundElectrolyte" id="field_backgroundElectrolyte"
+                        [(ngModel)]="bGEComposition.backgroundElectrolyte" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.bGEComposition.bgeConcentration" for="field_bgeConcentration">Bge Concentration</label>
+                    <input type="number" class="form-control" name="bgeConcentration" id="field_bgeConcentration"
+                        [(ngModel)]="bGEComposition.bgeConcentration" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.bGEComposition.method" for="field_method">Method</label>
+                    <select class="form-control" id="field_method" name="method" [(ngModel)]="bGEComposition.method" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="methodOption.id === bGEComposition.method?.id ? bGEComposition.method : methodOption" *ngFor="let methodOption of methods; trackBy: trackMethodById">{{methodOption.methodName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

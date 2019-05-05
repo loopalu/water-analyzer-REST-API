@@ -1,0 +1,49 @@
+{
+    "name": "Experiment",
+    "fields": [
+        {
+            "fieldName": "experimentTime",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "experimentType",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "experimentAnalysis",
+            "otherEntityRelationshipName": "experiment",
+            "relationshipName": "experimentAnalysis"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "experimentResults",
+            "otherEntityRelationshipName": "experiment",
+            "relationshipName": "experimentResults"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "method",
+            "otherEntityRelationshipName": "experiment",
+            "relationshipName": "method",
+            "otherEntityField": "methodName"
+        }
+    ],
+    "changelogDate": "20190505184032",
+    "entityTableName": "experiment",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

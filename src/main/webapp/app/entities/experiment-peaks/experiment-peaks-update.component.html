@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-experiment-peaks-heading" jhiTranslate="ceApp.experimentPeaks.home.createOrEditLabel">Create or edit a Experiment Peaks</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!experimentPeaks.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="experimentPeaks.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.experimentPeaks.peakNumber" for="field_peakNumber">Peak Number</label>
+                    <input type="number" class="form-control" name="peakNumber" id="field_peakNumber"
+                        [(ngModel)]="experimentPeaks.peakNumber" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.experimentPeaks.peakStart" for="field_peakStart">Peak Start</label>
+                    <input type="number" class="form-control" name="peakStart" id="field_peakStart"
+                        [(ngModel)]="experimentPeaks.peakStart" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.experimentPeaks.peakEnd" for="field_peakEnd">Peak End</label>
+                    <input type="number" class="form-control" name="peakEnd" id="field_peakEnd"
+                        [(ngModel)]="experimentPeaks.peakEnd" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.experimentPeaks.peakHighest" for="field_peakHighest">Peak Highest</label>
+                    <input type="number" class="form-control" name="peakHighest" id="field_peakHighest"
+                        [(ngModel)]="experimentPeaks.peakHighest" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.experimentPeaks.peakArea" for="field_peakArea">Peak Area</label>
+                    <input type="number" class="form-control" name="peakArea" id="field_peakArea"
+                        [(ngModel)]="experimentPeaks.peakArea" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.experimentPeaks.analyteConcentration" for="field_analyteConcentration">Analyte Concentration</label>
+                    <input type="number" class="form-control" name="analyteConcentration" id="field_analyteConcentration"
+                        [(ngModel)]="experimentPeaks.analyteConcentration" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.experimentPeaks.analyte" for="field_analyte">Analyte</label>
+                    <select class="form-control" id="field_analyte" name="analyte" [(ngModel)]="experimentPeaks.analyte" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="analyteOption.id === experimentPeaks.analyte?.id ? experimentPeaks.analyte : analyteOption" *ngFor="let analyteOption of analytes; trackBy: trackAnalyteById">{{analyteOption.analyteName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.experimentPeaks.experimentAnalysis" for="field_experimentAnalysis">Experiment Analysis</label>
+                    <select class="form-control" id="field_experimentAnalysis" name="experimentAnalysis" [(ngModel)]="experimentPeaks.experimentAnalysis" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="experimentAnalysisOption.id === experimentPeaks.experimentAnalysis?.id ? experimentPeaks.experimentAnalysis : experimentAnalysisOption" *ngFor="let experimentAnalysisOption of experimentanalyses; trackBy: trackExperimentAnalysisById">{{experimentAnalysisOption.measuringPoint}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+{
+    "ceApp": {
+        "experiment": {
+            "home": {
+                "title": "Experiments",
+                "createLabel": "Create a new Experiment",
+                "createOrEditLabel": "Create or edit a Experiment"
+            },
+            "created": "A new Experiment is created with identifier {{ param }}",
+            "updated": "A Experiment is updated with identifier {{ param }}",
+            "deleted": "A Experiment is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Experiment {{ id }}?"
+            },
+            "detail": {
+                "title": "Experiment"
+            },
+            "experimentTime": "Experiment Time",
+            "experimentType": "Experiment Type",
+            "experimentAnalysis": "Experiment Analysis",
+            "experimentResults": "Experiment Results",
+            "method": "Method"
+        }
+    }
+}

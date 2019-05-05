@@ -1,0 +1,33 @@
+{
+    "ceApp": {
+        "method": {
+            "home": {
+                "title": "Methods",
+                "createLabel": "Lisa uus Method",
+                "createOrEditLabel": "Lisa või muuda Method"
+            },
+            "created": "Uus Method on loodud identifikaatoriga {{ param }}",
+            "updated": "Method identifikaatoriga {{ param }} on muudetud",
+            "deleted": "Method identifikaatoriga {{ param }} on kustutatud",
+            "delete": {
+                "question": "Kas olete kindel, et soovite kustutada Method {{ id }}?"
+            },
+            "detail": {
+                "title": "Method"
+            },
+            "methodName": "Method Name",
+            "frequency": "Frequency",
+            "injectionType": "Injection Type",
+            "injectionTime": "Injection Time",
+            "measureValue": "Measure Value",
+            "unitOfMeasure": "Unit Of Measure",
+            "experimentTime": "Experiment Time",
+            "current": "Current",
+            "experiment": "Experiment",
+            "bGEComposition": "B GE Composition",
+            "analytesOfInterest": "Analytes Of Interest",
+            "capillaryType": "Capillary Type",
+            "matrixList": "Matrix List"
+        }
+    }
+}

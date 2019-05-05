@@ -1,0 +1,96 @@
+
+entity Experiment {
+    experimentTime Instant required,
+    experimentType String required
+}
+
+entity Analyte {
+	analyteName String required,
+    analyteGroup String required
+}
+
+entity ExperimentAnalysis {
+	measuringPoint Long required,
+	voltageExperiment Long required,
+    voltageSmoothed Long required,
+    valueMovingAverageSubtracted Long required,
+    valueOverThreshold Long required
+}
+
+entity Method {
+    methodName String required , 
+	frequency Long required, /* 300, 400, ... 2000 kHz */
+    injectionType String /* High Voltage, Pressure, Vacuum */
+    injectionTime Long,
+    measureValue Long required, /*kV for HV  and mbar and cm for pressure and vacuum.  */
+    unitOfMeasure String required, /* xx */
+    experimentTime Float required, /* minutes */
+    current Float required /* micro-ampers */
+}
+
+entity BGEComposition {
+	backgroundElectrolyte String ,
+    bgeConcentration Long 
+}
+
+
+entity CapillaryType {
+	capillaryName String required,
+	capillaryLength Float required, /* in cm */
+    effectiveLength Float required, /* in cm, from sample injection to detector */
+    innerDiameter Float required,
+    outerDiameter Float required,
+    electricForce Float  /* HV(V) / Total Length(m) */ 
+}
+
+entity ExperimentPeaks {
+	peakNumber Long,
+    peakStart Long, /* measuring Point */
+    peakEnd Long,
+    peakHighest Long,
+    peakArea Float,
+    analyteConcentration Float 
+    
+}
+
+entity MatrixList {
+	matrixName String,
+
+}
+entity ExperimentResults{
+	measuringPoint Long,
+    voltageValue Long
+}
+
+entity AnalytesOfInterest {
+	
+}
+
+
+enum Language {
+    ENGLISH
+}
+
+relationship OneToMany{
+    CapillaryType to Method{CapillaryType(capillaryName)}
+    
+    Experiment to ExperimentAnalysis{Experiment(experimentTime)} 
+    Experiment to ExperimentResults{Experiment(experimentTime)}
+    
+    Method to Experiment{Method(methodName)}
+    
+    Analyte to ExperimentPeaks{Analyte(analyteName)}
+    
+    ExperimentAnalysis to ExperimentPeaks{ExperimentAnalysis(measuringPoint)}
+    
+    MatrixList to Method {MatrixList(matrixName)}
+    
+    Method to BGEComposition{Method(methodName)}
+ 	Method to AnalytesOfInterest{Method(methodName)}   
+    Analyte to AnalytesOfInterest{Analyte(analyteName)}
+}
+
+
+
+
+

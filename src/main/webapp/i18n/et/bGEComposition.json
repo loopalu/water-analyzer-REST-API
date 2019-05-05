@@ -1,0 +1,23 @@
+{
+    "ceApp": {
+        "bGEComposition": {
+            "home": {
+                "title": "BGE Compositions",
+                "createLabel": "Lisa uus BGE Composition",
+                "createOrEditLabel": "Lisa või muuda BGE Composition"
+            },
+            "created": "Uus BGE Composition on loodud identifikaatoriga {{ param }}",
+            "updated": "BGE Composition identifikaatoriga {{ param }} on muudetud",
+            "deleted": "BGE Composition identifikaatoriga {{ param }} on kustutatud",
+            "delete": {
+                "question": "Kas olete kindel, et soovite kustutada BGE Composition {{ id }}?"
+            },
+            "detail": {
+                "title": "BGE Composition"
+            },
+            "backgroundElectrolyte": "Background Electrolyte",
+            "bgeConcentration": "Bge Concentration",
+            "method": "Method"
+        }
+    }
+}

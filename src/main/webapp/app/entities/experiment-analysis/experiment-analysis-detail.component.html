@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="experimentAnalysis">
+            <h2><span jhiTranslate="ceApp.experimentAnalysis.detail.title">Experiment Analysis</span> {{experimentAnalysis.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="ceApp.experimentAnalysis.measuringPoint">Measuring Point</span></dt>
+                <dd>
+                    <span>{{experimentAnalysis.measuringPoint}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.experimentAnalysis.voltageExperiment">Voltage Experiment</span></dt>
+                <dd>
+                    <span>{{experimentAnalysis.voltageExperiment}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.experimentAnalysis.voltageSmoothed">Voltage Smoothed</span></dt>
+                <dd>
+                    <span>{{experimentAnalysis.voltageSmoothed}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.experimentAnalysis.valueMovingAverageSubtracted">Value Moving Average Subtracted</span></dt>
+                <dd>
+                    <span>{{experimentAnalysis.valueMovingAverageSubtracted}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.experimentAnalysis.valueOverThreshold">Value Over Threshold</span></dt>
+                <dd>
+                    <span>{{experimentAnalysis.valueOverThreshold}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.experimentAnalysis.experiment">Experiment</span></dt>
+                <dd>
+                    <div *ngIf="experimentAnalysis.experiment">
+                        <a [routerLink]="['/experiment', experimentAnalysis.experiment?.id, 'view']">{{experimentAnalysis.experiment?.experimentTime}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/experiment-analysis', experimentAnalysis.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

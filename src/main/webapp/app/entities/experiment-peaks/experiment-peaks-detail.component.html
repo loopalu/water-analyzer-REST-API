@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="experimentPeaks">
+            <h2><span jhiTranslate="ceApp.experimentPeaks.detail.title">Experiment Peaks</span> {{experimentPeaks.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="ceApp.experimentPeaks.peakNumber">Peak Number</span></dt>
+                <dd>
+                    <span>{{experimentPeaks.peakNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.experimentPeaks.peakStart">Peak Start</span></dt>
+                <dd>
+                    <span>{{experimentPeaks.peakStart}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.experimentPeaks.peakEnd">Peak End</span></dt>
+                <dd>
+                    <span>{{experimentPeaks.peakEnd}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.experimentPeaks.peakHighest">Peak Highest</span></dt>
+                <dd>
+                    <span>{{experimentPeaks.peakHighest}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.experimentPeaks.peakArea">Peak Area</span></dt>
+                <dd>
+                    <span>{{experimentPeaks.peakArea}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.experimentPeaks.analyteConcentration">Analyte Concentration</span></dt>
+                <dd>
+                    <span>{{experimentPeaks.analyteConcentration}}</span>
+                </dd>
+                <dt><span jhiTranslate="ceApp.experimentPeaks.analyte">Analyte</span></dt>
+                <dd>
+                    <div *ngIf="experimentPeaks.analyte">
+                        <a [routerLink]="['/analyte', experimentPeaks.analyte?.id, 'view']">{{experimentPeaks.analyte?.analyteName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="ceApp.experimentPeaks.experimentAnalysis">Experiment Analysis</span></dt>
+                <dd>
+                    <div *ngIf="experimentPeaks.experimentAnalysis">
+                        <a [routerLink]="['/experiment-analysis', experimentPeaks.experimentAnalysis?.id, 'view']">{{experimentPeaks.experimentAnalysis?.measuringPoint}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/experiment-peaks', experimentPeaks.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

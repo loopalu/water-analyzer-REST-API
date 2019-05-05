@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-experiment-heading" jhiTranslate="ceApp.experiment.home.createOrEditLabel">Create or edit a Experiment</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!experiment.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="experiment.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.experiment.experimentTime" for="field_experimentTime">Experiment Time</label>
+                    <div class="d-flex">
+                        <input id="field_experimentTime" type="datetime-local" class="form-control" name="experimentTime" [(ngModel)]="experimentTime" placeholder="YYYY-MM-DD HH:mm"
+                        required/>
+                    </div>
+                    <div [hidden]="!(editForm.controls.experimentTime?.dirty && editForm.controls.experimentTime?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.experimentTime?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.experimentTime?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.experiment.experimentType" for="field_experimentType">Experiment Type</label>
+                    <input type="text" class="form-control" name="experimentType" id="field_experimentType"
+                        [(ngModel)]="experiment.experimentType" required/>
+                    <div [hidden]="!(editForm.controls.experimentType?.dirty && editForm.controls.experimentType?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.experimentType?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ceApp.experiment.method" for="field_method">Method</label>
+                    <select class="form-control" id="field_method" name="method" [(ngModel)]="experiment.method" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="methodOption.id === experiment.method?.id ? experiment.method : methodOption" *ngFor="let methodOption of methods; trackBy: trackMethodById">{{methodOption.methodName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

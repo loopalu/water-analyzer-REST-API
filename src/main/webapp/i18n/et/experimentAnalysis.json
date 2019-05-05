@@ -1,0 +1,27 @@
+{
+    "ceApp": {
+        "experimentAnalysis": {
+            "home": {
+                "title": "Experiment Analyses",
+                "createLabel": "Lisa uus Experiment Analysis",
+                "createOrEditLabel": "Lisa või muuda Experiment Analysis"
+            },
+            "created": "Uus Experiment Analysis on loodud identifikaatoriga {{ param }}",
+            "updated": "Experiment Analysis identifikaatoriga {{ param }} on muudetud",
+            "deleted": "Experiment Analysis identifikaatoriga {{ param }} on kustutatud",
+            "delete": {
+                "question": "Kas olete kindel, et soovite kustutada Experiment Analysis {{ id }}?"
+            },
+            "detail": {
+                "title": "Experiment Analysis"
+            },
+            "measuringPoint": "Measuring Point",
+            "voltageExperiment": "Voltage Experiment",
+            "voltageSmoothed": "Voltage Smoothed",
+            "valueMovingAverageSubtracted": "Value Moving Average Subtracted",
+            "valueOverThreshold": "Value Over Threshold",
+            "experimentPeaks": "Experiment Peaks",
+            "experiment": "Experiment"
+        }
+    }
+}
