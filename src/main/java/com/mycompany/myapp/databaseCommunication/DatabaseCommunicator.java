@@ -15,22 +15,36 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 @RestController
-public class Test {
+public class DatabaseCommunicator {
     private final Logger log = LoggerFactory.getLogger(AnalytesOfInterestResource.class);
     private String databaseAddress = "localhost";
 
-    @GetMapping("/getOperators")
-    public String getOperators() {
-        log.debug("REST request to get all operators");
+    @GetMapping("/getAnalytes")
+    public String getAnalytes() {
+        return getter("analytes");
+    }
+
+    @GetMapping("/getBges")
+    public String getBges() {
+        return getter("bges");
+    }
+
+    @GetMapping("/getMatrixes")
+    public String getMatrixes() {
+        return getter("matrixes");
+    }
+
+    private String getter(String string) {
+        log.debug("REST request to get all " + string);
         ArrayList<String> lines = new ArrayList<>();
         DatabaseConnection databaseConnection = new DatabaseConnection();
         Connection connection = databaseConnection.getConnection();
         if (connection != null) {
             try {
                 Statement statement = connection.createStatement();
-                ResultSet set = statement.executeQuery("SELECT * FROM operaatorid;");
+                ResultSet set = statement.executeQuery("SELECT * FROM " + string + ";");
                 while (set.next()) {
-                    lines.add(set.getString(2)+ " " + set.getString(3));
+                    lines.add(set.getString(2));
                 }
                 return new Gson().toJson(lines);
             } catch (SQLException e) {
