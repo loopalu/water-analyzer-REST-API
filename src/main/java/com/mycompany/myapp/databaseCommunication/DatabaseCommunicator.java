@@ -34,6 +34,32 @@ public class DatabaseCommunicator {
         return getter("matrixes");
     }
 
+    @GetMapping("/getUsers")
+    public String getUsers() {
+        log.debug("REST request to get all users");
+        ArrayList<User> lines = new ArrayList<>();
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        Connection connection = databaseConnection.getConnection();
+        if (connection != null) {
+            try {
+                Statement statement = connection.createStatement();
+                ResultSet set = statement.executeQuery("SELECT * FROM users;");
+                while (set.next()) {
+                    User user = new User();
+                    user.setName(set.getString(2));
+                    user.setUserClass(set.getInt(3));
+                    lines.add(user);
+                }
+                return new Gson().toJson(lines);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } else {
+            return "Database is not available right now!";
+        }
+        return "Works";
+    }
+
     private String getter(String string) {
         log.debug("REST request to get all " + string);
         ArrayList<String> lines = new ArrayList<>();
