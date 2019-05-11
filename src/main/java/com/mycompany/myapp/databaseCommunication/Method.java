@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 public class Method {
     private String nameOfTest;
+    private String nameOfMethod;
     private String nameOfUser;
     private String userClass;
     private ObservableList<Analyte> analytes;
@@ -212,5 +213,13 @@ public class Method {
 
     public void setTestTime(String testTime) {
         this.testTime = testTime;
+    }
+
+    public String getNameOfMethod() {
+        return nameOfMethod;
+    }
+
+    public void setNameOfMethod(String nameOfMethod) {
+        this.nameOfMethod = nameOfMethod;
     }
 }
