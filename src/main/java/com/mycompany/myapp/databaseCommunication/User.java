@@ -1,7 +1,16 @@
 package com.mycompany.myapp.databaseCommunication;
 
+/**
+ * User of the desktop application.
+ */
 public class User {
+    /**
+     * Name of the user.
+     */
     private String name;
+    /**
+     * Class that the user belongs to. Shows the access rights. 1 - administrators, 2 - scientists, 3 - regular users.
+     */
     private int userClass;
 
     public String getName() {
@@ -16,7 +25,7 @@ public class User {
         return userClass;
     }
 
-    public void setUserClass(int userClass) {
+    void setUserClass(int userClass) {
         this.userClass = userClass;
     }
 }

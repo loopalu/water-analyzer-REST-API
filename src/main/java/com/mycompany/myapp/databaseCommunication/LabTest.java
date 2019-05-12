@@ -5,17 +5,18 @@ import javafx.collections.ObservableList;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Method {
+/**
+ * Class that is used to store all the data of the test (data of the method included).
+ */
+public class LabTest {
     private String nameOfTest;
     private String nameOfMethod;
     private String nameOfUser;
     private String userClass;
     private ObservableList<Analyte> analytes;
-    //private HashMap<String,Integer> analyteConcentrations = new HashMap<>();
     private String analyteUnit;
     private String matrix;
     private ObservableList<Analyte> bge;
-    //private HashMap<String, Integer> bgeConcentrations = new HashMap<>();
     private String bgeUnit;
     private String capillary;
     private String capillaryTotalLength;
@@ -30,12 +31,13 @@ public class Method {
     private String description;
     private String hvValue;
     private String testTime;
+    private ArrayList testData;
 
     public String getNameOfUser() {
         return nameOfUser;
     }
 
-    public void setNameOfUser(String nameOfUser) {
+    void setNameOfUser(String nameOfUser) {
         this.nameOfUser = nameOfUser;
     }
 
@@ -47,19 +49,11 @@ public class Method {
         this.analytes = analytes;
     }
 
-//    public HashMap<String, Integer> getAnalyteConcentrations() {
-//        return analyteConcentrations;
-//    }
-//
-//    public void setAnalyteConcentrations(HashMap<String, Integer> analyteConcentrations) {
-//        this.analyteConcentrations = analyteConcentrations;
-//    }
-
     public String getAnalyteUnit() {
         return analyteUnit;
     }
 
-    public void setAnalyteUnit(String analyteUnit) {
+    void setAnalyteUnit(String analyteUnit) {
         this.analyteUnit = analyteUnit;
     }
 
@@ -79,19 +73,11 @@ public class Method {
         this.bge = bge;
     }
 
-//    public HashMap<String, Integer> getBgeConcentrations() {
-//        return bgeConcentrations;
-//    }
-//
-//    public void setBgeConcentrations(HashMap<String, Integer> bgeConcentrations) {
-//        this.bgeConcentrations = bgeConcentrations;
-//    }
-
     public String getBgeUnit() {
         return bgeUnit;
     }
 
-    public void setBgeUnit(String bgeUnit) {
+    void setBgeUnit(String bgeUnit) {
         this.bgeUnit = bgeUnit;
     }
 
@@ -107,7 +93,7 @@ public class Method {
         return capillaryTotalLength;
     }
 
-    public void setCapillaryTotalLength(String capillaryTotalLength) {
+    void setCapillaryTotalLength(String capillaryTotalLength) {
         this.capillaryTotalLength = capillaryTotalLength;
     }
 
@@ -115,7 +101,7 @@ public class Method {
         return capillaryEffectiveLength;
     }
 
-    public void setCapillaryEffectiveLength(String capillaryEffectiveLength) {
+    void setCapillaryEffectiveLength(String capillaryEffectiveLength) {
         this.capillaryEffectiveLength = capillaryEffectiveLength;
     }
 
@@ -123,7 +109,7 @@ public class Method {
         return injectionMethod;
     }
 
-    public void setInjectionMethod(String injectionMethod) {
+    void setInjectionMethod(String injectionMethod) {
         this.injectionMethod = injectionMethod;
     }
 
@@ -131,7 +117,7 @@ public class Method {
         return injectionChoice;
     }
 
-    public void setInjectionChoice(String injectionChoice) {
+    void setInjectionChoice(String injectionChoice) {
         this.injectionChoice = injectionChoice;
     }
 
@@ -139,7 +125,7 @@ public class Method {
         return injectionChoiceValue;
     }
 
-    public void setInjectionChoiceValue(String injectionChoiceValue) {
+    void setInjectionChoiceValue(String injectionChoiceValue) {
         this.injectionChoiceValue = injectionChoiceValue;
     }
 
@@ -147,7 +133,7 @@ public class Method {
         return injectionChoiceUnit;
     }
 
-    public void setInjectionChoiceUnit(String injectionChoiceUnit) {
+    void setInjectionChoiceUnit(String injectionChoiceUnit) {
         this.injectionChoiceUnit = injectionChoiceUnit;
     }
 
@@ -179,7 +165,7 @@ public class Method {
         return description;
     }
 
-    public void setDescription(String description) {
+    void setDescription(String description) {
         this.description = description;
     }
 
@@ -187,7 +173,7 @@ public class Method {
         return hvValue;
     }
 
-    public void setHvValue(String hvValue) {
+    void setHvValue(String hvValue) {
         this.hvValue = hvValue;
     }
 
@@ -195,7 +181,7 @@ public class Method {
         return nameOfTest;
     }
 
-    public void setNameOfTest(String nameOfTest) {
+    void setNameOfTest(String nameOfTest) {
         this.nameOfTest = nameOfTest;
     }
 
@@ -203,7 +189,7 @@ public class Method {
         return userClass;
     }
 
-    public void setUserClass(String userClass) {
+    void setUserClass(String userClass) {
         this.userClass = userClass;
     }
 
@@ -211,7 +197,7 @@ public class Method {
         return testTime;
     }
 
-    public void setTestTime(String testTime) {
+    void setTestTime(String testTime) {
         this.testTime = testTime;
     }
 
@@ -219,7 +205,15 @@ public class Method {
         return nameOfMethod;
     }
 
-    public void setNameOfMethod(String nameOfMethod) {
+    void setNameOfMethod(String nameOfMethod) {
         this.nameOfMethod = nameOfMethod;
+    }
+
+    public ArrayList getTestData() {
+        return testData;
+    }
+
+    void setTestData(ArrayList testData) {
+        this.testData = testData;
     }
 }

@@ -4,13 +4,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DatabaseConnection {
+/**
+ * Class for making connection to the database.
+ */
+class DatabaseConnection {
     private Connection connection;
 
-    public DatabaseConnection() {
-        String url = "jdbc:postgresql://localhost:5432/postgres";
-        String username = "postgres";
-        String password = "aivar";
+    DatabaseConnection() {
+        String url = "jdbc:postgresql://localhost:5432/postgres"; // localhost has to be changed to the addess of server.
+                                                                  // postgres has to be changed to the name of database.
+        String username = "postgres"; // Has to be changed to the username of admin.
+        String password = "aivar"; // Has to be changed to the password of admin.
         try {
             Class.forName("org.postgresql.Driver");
         }
@@ -25,7 +29,7 @@ public class DatabaseConnection {
         }
     }
 
-    public Connection getConnection() {
+    Connection getConnection() {
         return connection;
     }
 }
