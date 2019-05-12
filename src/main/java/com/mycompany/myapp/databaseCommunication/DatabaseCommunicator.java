@@ -5,6 +5,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.mycompany.myapp.web.rest.AnalytesOfInterestResource;
+import io.swagger.models.auth.In;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +29,9 @@ public class DatabaseCommunicator {
     private String bgeUnit;
     private String analyteUnit;
     private int method_id;
+    private String nameOfTest;
+    private int user_id;
+    private int test_id;
 
     @GetMapping("/getAnalytes")
     public String getAnalytes() {
@@ -54,11 +58,119 @@ public class DatabaseCommunicator {
         putAnalytes(jsonObject);
         putMatrixes(jsonObject);
         putBges(jsonObject);
-        putMethods(jsonObject);
-//        putAnalyteMeasurements(jsonObject);
-//        putBgeMeasurements(jsonObject);
-//        putTests(jsonObject);
-//        putMeasurements(jsonObject);
+        putMethod(jsonObject);
+        putAnalyteMeasurements(jsonObject);
+        putBgeMeasurements(jsonObject);
+        putTests(jsonObject);
+        putMeasurements(jsonObject);
+    }
+
+    private void putMeasurements(JsonObject jsonObject) {
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        Connection connection = databaseConnection.getConnection();
+        PreparedStatement preparedStatement = null;
+        JsonArray testData = jsonObject.getAsJsonArray("testData");
+        try {
+            for (int i = 0; i < testData.size(); i++) {
+                preparedStatement = connection.prepareStatement("INSERT INTO measurements (test_id, measurement) VALUES (?,?)");
+                preparedStatement.setInt(1,test_id);
+                preparedStatement.setInt(2,Integer.parseInt(String.valueOf(testData.get(i))));
+                int someInt = preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void putTests(JsonObject jsonObject) {
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        Connection connection = databaseConnection.getConnection();
+        Statement statement = null;
+        String user_name = String.valueOf(jsonObject.get("nameOfUser")).replace('"', ' ').trim();
+        String testDescription = String.valueOf(jsonObject.get("description")).replace('"', ' ').trim();
+        String testDuration = String.valueOf(jsonObject.get("testTime")).replace('"', ' ').trim();
+        int hours = Integer.parseInt(testDuration.split(":")[0]);
+        int minutes = Integer.parseInt(testDuration.split(":")[1]);
+        int secunds = Integer.parseInt(testDuration.split(":")[2]);
+        int duration = hours * 3600 + minutes * 60 + secunds;
+        try {
+            statement = connection.createStatement();
+            ResultSet set = statement.executeQuery("select user_id from users where user_name = '" + user_name + "';");
+            if (set.next()) {
+                user_id = set.getInt(1);
+            }
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO tests (user_id, method_id, " +
+                "test_time, test_description, test_duration) VALUES (?,?,?,?,?);");
+            preparedStatement.setInt(1,user_id);
+            preparedStatement.setInt(2,method_id);
+            preparedStatement.setString(3,nameOfTest);
+            preparedStatement.setString(4,testDescription);
+            preparedStatement.setInt(5,duration);
+            int someInt = preparedStatement.executeUpdate();
+            ResultSet idSet = statement.executeQuery("select test_id from tests where test_time = '" + nameOfTest + "';");
+            idSet.next();
+            test_id = idSet.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void putBgeMeasurements(JsonObject jsonObject) {
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        Connection connection = databaseConnection.getConnection();
+        nameOfTest = String.valueOf(jsonObject.get("nameOfTest")).replace('"', ' ').trim();
+        try {
+            for (int i = 0; i < bgeIdQueue.size(); i++) {
+                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO bge_measurements (test_time, method_id, bge_id, bge_amount, bge_unit) VALUES (?,?,?,?,?);");
+                preparedStatement.setString(1, nameOfTest);
+                preparedStatement.setInt(2, method_id);
+                preparedStatement.setInt(3, bgeIdQueue.get(i));
+                preparedStatement.setInt(4, bgeValueQueue.get(i));
+                preparedStatement.setString(5, bgeUnit);
+                int someInt = preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void putAnalyteMeasurements(JsonObject jsonObject) {
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        Connection connection = databaseConnection.getConnection();
+        nameOfTest = String.valueOf(jsonObject.get("nameOfTest")).replace('"', ' ').trim();
+        try {
+            for (int i = 0; i < analyteIdQueue.size(); i++) {
+                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO analyte_measurements (test_time, method_id, analyte_id, amount, analyte_unit) VALUES (?,?,?,?,?);");
+                preparedStatement.setString(1, nameOfTest);
+                preparedStatement.setInt(2, method_id);
+                preparedStatement.setInt(3, analyteIdQueue.get(i));
+                preparedStatement.setInt(4, analyteValueQueue.get(i));
+                preparedStatement.setString(5, analyteUnit);
+                int someInt = preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private ArrayList<String> getMethodNames() {
@@ -89,7 +201,7 @@ public class DatabaseCommunicator {
         return lines;
     }
 
-    private void putMethods(JsonObject jsonObject) {
+    private void putMethod(JsonObject jsonObject) {
         ArrayList<String> currentMethods = getMethodNames();
         String methodName = String.valueOf(jsonObject.get("nameOfMethod")).replace('"', ' ').trim();
         if (currentMethods.contains(methodName)) {
