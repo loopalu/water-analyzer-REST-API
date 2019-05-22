@@ -63,6 +63,8 @@ public class DatabaseCommunicator {
      */
     @GetMapping(path = "/postTest")
     public void postTest(@RequestHeader("Data") String string) {
+        log.debug("REST request to post test data");
+        System.out.println("postTest");
         byte[] decodedBytes = Base64.getDecoder().decode(string);
         String decodedString = new String(decodedBytes);
         Gson gson = new Gson();
@@ -257,22 +259,40 @@ public class DatabaseCommunicator {
     private void putBgeMeasurements(JsonObject jsonObject) {
         DatabaseConnection databaseConnection = new DatabaseConnection();
         Connection connection = databaseConnection.getConnection();
-        nameOfTest = String.valueOf(jsonObject.get("nameOfTest")).replace('"', ' ').trim();
+        Statement statement = null;
+        int tempId = -1;
         try {
-            for (int i = 0; i < bgeIdQueue.size(); i++) {
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO bge_measurements (test_time, method_id, bge_id, bge_amount, bge_unit) VALUES (?,?,?,?,?);");
-                preparedStatement.setString(1, nameOfTest);
-                preparedStatement.setInt(2, method_id);
-                preparedStatement.setInt(3, bgeIdQueue.get(i));
-                preparedStatement.setInt(4, bgeValueQueue.get(i));
-                preparedStatement.setString(5, bgeUnit);
-                int someInt = preparedStatement.executeUpdate();
+            statement = connection.createStatement();
+            ResultSet set = statement.executeQuery("select method_id from bge_measurements where method_id = '" + method_id + "';");
+            if (set.next()) {
+                tempId = set.getInt(1);
+            } else {
+                tempId = -1;
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try {
-            connection.close();
+            if (tempId != -1) {
+                PreparedStatement preparedDeleteStatement = connection.prepareStatement("DELETE FROM bge_measurements WHERE method_id = " + method_id + ";");
+                int someInt = preparedDeleteStatement.executeUpdate();
+            }
+            System.out.println("TempID " + tempId);
+            nameOfTest = String.valueOf(jsonObject.get("nameOfTest")).replace('"', ' ').trim();
+            try {
+                for (int i = 0; i < bgeIdQueue.size(); i++) {
+                    PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO bge_measurements (test_time, method_id, bge_id, bge_amount, bge_unit) VALUES (?,?,?,?,?);");
+                    preparedStatement.setString(1, nameOfTest);
+                    preparedStatement.setInt(2, method_id);
+                    preparedStatement.setInt(3, bgeIdQueue.get(i));
+                    preparedStatement.setInt(4, bgeValueQueue.get(i));
+                    preparedStatement.setString(5, bgeUnit);
+                    int someInt = preparedStatement.executeUpdate();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -285,22 +305,39 @@ public class DatabaseCommunicator {
     private void putAnalyteMeasurements(JsonObject jsonObject) {
         DatabaseConnection databaseConnection = new DatabaseConnection();
         Connection connection = databaseConnection.getConnection();
-        nameOfTest = String.valueOf(jsonObject.get("nameOfTest")).replace('"', ' ').trim();
+        Statement statement = null;
+        int tempId = -1;
         try {
-            for (int i = 0; i < analyteIdQueue.size(); i++) {
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO analyte_measurements (test_time, method_id, analyte_id, analyte_amount, analyte_unit) VALUES (?,?,?,?,?);");
-                preparedStatement.setString(1, nameOfTest);
-                preparedStatement.setInt(2, method_id);
-                preparedStatement.setInt(3, analyteIdQueue.get(i));
-                preparedStatement.setInt(4, analyteValueQueue.get(i));
-                preparedStatement.setString(5, analyteUnit);
-                int someInt = preparedStatement.executeUpdate();
+            statement = connection.createStatement();
+            ResultSet set = statement.executeQuery("select method_id from analyte_measurements where method_id = '" + method_id + "';");
+            if (set.next()) {
+                tempId = set.getInt(1);
+            } else {
+                tempId = -1;
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try {
-            connection.close();
+            if (tempId != -1) {
+                PreparedStatement preparedDeleteStatement = connection.prepareStatement("DELETE FROM analyte_measurements WHERE method_id = " + method_id + ";");
+                int someInt = preparedDeleteStatement.executeUpdate();
+            }
+            nameOfTest = String.valueOf(jsonObject.get("nameOfTest")).replace('"', ' ').trim();
+            try {
+                for (int i = 0; i < analyteIdQueue.size(); i++) {
+                    PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO analyte_measurements (test_time, method_id, analyte_id, analyte_amount, analyte_unit) VALUES (?,?,?,?,?);");
+                    preparedStatement.setString(1, nameOfTest);
+                    preparedStatement.setInt(2, method_id);
+                    preparedStatement.setInt(3, analyteIdQueue.get(i));
+                    preparedStatement.setInt(4, analyteValueQueue.get(i));
+                    preparedStatement.setString(5, analyteUnit);
+                    int someInt = preparedStatement.executeUpdate();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -404,6 +441,8 @@ public class DatabaseCommunicator {
      * @param jsonObject Data in the form of JsonObject.
      */
     private void putBges(JsonObject jsonObject) {
+        bgeIdQueue = new ArrayList<>();
+        bgeValueQueue = new ArrayList<>();
         String currentBgesString = getBges().replace('"', ' ').replace('[', ' ').replace(']', ' ');
         List<String> currentBges = Arrays.asList(currentBgesString.trim().split(" , "));
         JsonElement bgeJson = jsonObject.get("bge");
@@ -445,6 +484,8 @@ public class DatabaseCommunicator {
      * @param jsonObject Data in the form of JsonObject.
      */
     private void putAnalytes(JsonObject jsonObject) {
+        analyteIdQueue = new ArrayList<>();
+        analyteValueQueue = new ArrayList<>();
         String currentAnalytesString = getAnalytes().replace('"', ' ').replace('[', ' ').replace(']', ' ');
         List<String> currentAnalytes = Arrays.asList(currentAnalytesString.trim().split(" , "));
         JsonElement analyteJson = jsonObject.get("analytes");

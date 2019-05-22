@@ -3,7 +3,6 @@ package com.mycompany.myapp.databaseCommunication;
 import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Class that is used to store all the data of the test (data of the method included).
