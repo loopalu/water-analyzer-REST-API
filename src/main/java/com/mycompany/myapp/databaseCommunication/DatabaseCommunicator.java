@@ -199,7 +199,7 @@ public class DatabaseCommunicator {
             for (int i = 0; i < testData.size(); i++) {
                 preparedStatement = connection.prepareStatement("INSERT INTO measurements (test_id, measurement) VALUES (?,?)");
                 preparedStatement.setInt(1,test_id);
-                preparedStatement.setInt(2,Integer.parseInt(String.valueOf(testData.get(i))));
+                preparedStatement.setInt(2,Integer.parseInt(String.valueOf(testData.get(i)).replace('"', ' ').trim()));
                 int someInt = preparedStatement.executeUpdate();
             }
         } catch (SQLException e) {
